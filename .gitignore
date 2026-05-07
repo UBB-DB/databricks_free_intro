@@ -1,1 +1,23 @@
+# MyST / Jupyter Book v2 build output
 _build/
+
+# Python (uv-managed)
+.venv/
+__pycache__/
+*.egg-info/
+*.pyc
+.uv*
+.python-version.local
+
+# Node (mystmd is Node-based)
+node_modules/
+package-lock.json
+
+# Editor / OS
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Jupyter
+.ipynb_checkpoints/

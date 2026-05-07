@@ -1,0 +1,69 @@
+[project]
+name = "databricks-free-intro"
+version = "0.1.0"
+description = "BI on the Lakehouse - 2-hour Databricks Free Edition crash course for UBB Cluj CS students."
+readme = "README.md"
+requires-python = ">=3.11,<3.13"
+license = { text = "CC-BY-4.0" }
+authors = [
+    { name = "thec0dewriter" },
+]
+keywords = [
+    "databricks",
+    "lakehouse",
+    "delta-lake",
+    "business-intelligence",
+    "ssis",
+    "pyspark",
+    "ubb-cluj",
+]
+
+# Runtime dependencies for the local-PySpark appendix and the Jupyter Book v2 launcher.
+# NOTE: jupyter-book v2 is a Python wrapper around mystmd (Node), so Node 18+ must
+# also be installed on the contributor's machine for `jupyter book build --html`
+# to work. CI uses mystmd directly via npm, so it does not depend on this Python
+# package; this env is for local authoring + the appendix-pyspark-local.md
+# exercises only.
+#
+# Free Edition note: databricks-connect is *intentionally not* listed - Databricks
+# Free Edition does not support remote IDE / Connect workflows. The local PySpark
+# appendix uses vanilla open-source PySpark on a CSV.
+dependencies = [
+    "jupyter-book>=2.0.0a0",
+    "jupyterlab>=4.0",
+    "pyspark>=3.5",
+    "pandas>=2.2",
+    "pyarrow>=16.0",
+    "matplotlib>=3.8",
+]
+
+[project.optional-dependencies]
+dev = [
+    "ruff>=0.6",
+    "pre-commit>=3.7",
+]
+
+[project.urls]
+Homepage = "https://github.com/thec0dewriter/databricks_free_intro"
+Issues = "https://github.com/thec0dewriter/databricks_free_intro/issues"
+"Databricks Free Edition" = "https://www.databricks.com/learn/free-edition"
+"UBB Cluj MathInfo" = "https://www.cs.ubbcluj.ro/en/"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+# This project ships book content, not a Python package. Mark it as a metadata-
+# only wheel so `uv sync` works without needing a src/ layout.
+bypass-selection = true
+
+[tool.uv]
+package = false
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B"]

@@ -1,0 +1,61 @@
+# Build the MyST / Jupyter Book v2 site and deploy it to GitHub Pages.
+# Adapted from the canonical mystmd template:
+#   https://github.com/jupyter-book/mystmd/blob/main/docs/deployment-github-pages.md
+#
+# To enable: in repo Settings -> Pages, set "Source" to "GitHub Actions".
+
+name: Deploy book to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+env:
+  # Project pages live at https://<user>.github.io/<repo>/, so the site needs
+  # a BASE_URL of `/<repo>`. For a user/organisation root site, set this to ''.
+  BASE_URL: /${{ github.event.repository.name }}
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Allow only one production deployment to be in flight at a time, but never
+# cancel a deployment that has already started.
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Configure GitHub Pages
+        uses: actions/configure-pages@v5
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20.x
+
+      - name: Install MyST Markdown
+        run: npm install -g mystmd
+
+      - name: Build HTML
+        run: myst build --html
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./_build/html
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

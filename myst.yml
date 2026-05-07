@@ -2,13 +2,45 @@
 version: 1
 project:
   id: d730246f-9f5a-4ad4-b523-eb4fce68fdaa
-  title: BI Data Lakehouse Crash Course (2h)
-  description: Crash course materials for university BI students using Databricks Free Edition.
+  title: BI on the Lakehouse - 2-hour crash course (UBB Cluj)
+  description: A 2-hour Business Intelligence crash course for UBB Cluj CS students using Databricks Free Edition. Bridges from SQL Server / SSIS / SSMS to a serverless lakehouse with Delta Lake, AI/BI Dashboards, and AI/BI Genie.
+  authors:
+    - name: thec0dewriter
+  github: https://github.com/thec0dewriter/databricks_free_intro
+  license: CC-BY-4.0
+  open_access: true
+  subject: Business Intelligence
+  keywords:
+    - Databricks
+    - Lakehouse
+    - Delta Lake
+    - Business Intelligence
+    - SSIS
+    - PySpark
+    - Unity Catalog
+    - AI/BI Dashboards
+    - AI/BI Genie
+    - UBB Cluj
   toc:
     - file: intro.md
     - file: setup-databricks-free.md
     - file: module-1-lakehouse-basics.md
     - file: module-2-bi-with-sql.md
     - file: module-3-dashboard-and-wrapup.md
+    - title: Appendices
+      children:
+        - file: appendix-ssis-to-databricks.md
+        - file: appendix-pyspark-local.md
+        - file: appendix-unity-catalog.md
 site:
   template: book-theme
+  options:
+    favicon: ""
+    logo_text: BI on the Lakehouse
+  nav:
+    - title: GitHub
+      url: https://github.com/thec0dewriter/databricks_free_intro
+    - title: Databricks Free Edition
+      url: https://www.databricks.com/learn/free-edition
+    - title: UBB Cluj MathInfo
+      url: https://www.cs.ubbcluj.ro/en/
