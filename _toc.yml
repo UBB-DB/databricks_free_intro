@@ -1,0 +1,7 @@
+format: jb-book
+root: intro
+chapters:
+  - file: setup-databricks-free
+  - file: module-1-lakehouse-basics
+  - file: module-2-bi-with-sql
+  - file: module-3-dashboard-and-wrapup
