@@ -9,7 +9,7 @@ project:
   github: https://github.com/thec0dewriter/databricks_free_intro
   license: CC-BY-4.0
   open_access: true
-  subject: Business Intelligence
+  subject: Data Engineering & Business Intelligence
   keywords:
     - Databricks
     - Lakehouse
