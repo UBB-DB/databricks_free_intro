@@ -1,0 +1,545 @@
+{
+  "datasets": [
+    {
+      "name": "hr_metrics",
+      "displayName": "HR Metrics",
+      "config": {
+        "source": "workspace.hr_data.bronze_hr_dataset",
+        "measures": [
+          {
+            "name": "Employee Count",
+            "expr": "COUNT(DISTINCT EMP_ID)",
+            "displayName": "Employee Count",
+            "comment": "Total number of employees"
+          },
+          {
+            "displayName": "Total Salary",
+            "format": {
+              "type": "currency",
+              "currencyCode": "USD",
+              "decimalPlaces": {
+                "type": "exact",
+                "places": 0.0
+              }
+            },
+            "name": "Total Salary",
+            "expr": "SUM(SALARY)",
+            "comment": "Total salary expense"
+          },
+          {
+            "displayName": "Average Salary",
+            "format": {
+              "type": "currency",
+              "currencyCode": "USD",
+              "decimalPlaces": {
+                "type": "exact",
+                "places": 0.0
+              }
+            },
+            "name": "Average Salary",
+            "expr": "AVG(SALARY)",
+            "comment": "Average employee salary"
+          },
+          {
+            "displayName": "Median Salary",
+            "format": {
+              "type": "currency",
+              "currencyCode": "USD",
+              "decimalPlaces": {
+                "type": "exact",
+                "places": 0.0
+              }
+            },
+            "name": "Median Salary",
+            "expr": "PERCENTILE_CONT(0.5) WITHIN GROUP (ORDER BY SALARY)",
+            "comment": "Median employee salary"
+          },
+          {
+            "displayName": "Min Salary",
+            "format": {
+              "type": "currency",
+              "currencyCode": "USD",
+              "decimalPlaces": {
+                "type": "exact",
+                "places": 0.0
+              }
+            },
+            "name": "Min Salary",
+            "expr": "MIN(SALARY)",
+            "comment": "Minimum salary"
+          },
+          {
+            "displayName": "Max Salary",
+            "format": {
+              "type": "currency",
+              "currencyCode": "USD",
+              "decimalPlaces": {
+                "type": "exact",
+                "places": 0.0
+              }
+            },
+            "name": "Max Salary",
+            "expr": "MAX(SALARY)",
+            "comment": "Maximum salary"
+          }
+        ],
+        "version": 1.1,
+        "comment": "HR employee metrics for workforce analytics",
+        "dimensions": [
+          {
+            "name": "Department",
+            "expr": "DEPARTMENT",
+            "displayName": "Department",
+            "comment": "Employee department"
+          },
+          {
+            "name": "Job Title",
+            "expr": "JOB_TITLE",
+            "displayName": "Job Title",
+            "comment": "Employee job title"
+          },
+          {
+            "name": "Location",
+            "expr": "LOCATION",
+            "displayName": "Location",
+            "comment": "Employee work location"
+          },
+          {
+            "name": "City",
+            "expr": "CITY",
+            "displayName": "City",
+            "comment": "Employee city"
+          },
+          {
+            "name": "State",
+            "expr": "STATE",
+            "displayName": "State",
+            "comment": "Employee state"
+          },
+          {
+            "name": "Education Level",
+            "expr": "EDUCATION_LEVEL",
+            "displayName": "Education Level",
+            "comment": "Employee education level"
+          },
+          {
+            "name": "Hire Year",
+            "expr": "YEAR(HIRE_DT)",
+            "displayName": "Hire Year",
+            "comment": "Year employee was hired"
+          },
+          {
+            "name": "Hire Month",
+            "expr": "DATE_TRUNC('MONTH', HIRE_DT)",
+            "displayName": "Hire Month",
+            "comment": "Month employee was hired"
+          }
+        ]
+      }
+    }
+  ],
+  "pages": [
+    {
+      "name": "d1df3d16",
+      "displayName": "First",
+      "layout": [
+        {
+          "widget": {
+            "name": "total_employees",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "hr_metrics",
+                  "fields": [
+                    {
+                      "name": "measure(Employee Count)",
+                      "expression": "MEASURE(`Employee Count`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "frame": {
+                "title": "Total Employees",
+                "showTitle": true
+              },
+              "widgetType": "counter",
+              "encodings": {
+                "value": {
+                  "fieldName": "measure(Employee Count)"
+                }
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 0,
+            "width": 3,
+            "height": 2
+          }
+        },
+        {
+          "widget": {
+            "name": "avg_salary",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "hr_metrics",
+                  "fields": [
+                    {
+                      "name": "measure(Average Salary)",
+                      "expression": "MEASURE(`Average Salary`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "frame": {
+                "title": "Average Salary",
+                "showTitle": true
+              },
+              "widgetType": "counter",
+              "encodings": {
+                "value": {
+                  "fieldName": "measure(Average Salary)"
+                }
+              }
+            }
+          },
+          "position": {
+            "x": 3,
+            "y": 0,
+            "width": 3,
+            "height": 2
+          }
+        },
+        {
+          "widget": {
+            "name": "total_salary",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "hr_metrics",
+                  "fields": [
+                    {
+                      "name": "measure(Total Salary)",
+                      "expression": "MEASURE(`Total Salary`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "frame": {
+                "title": "Total Salary",
+                "showTitle": true
+              },
+              "widgetType": "counter",
+              "encodings": {
+                "value": {
+                  "fieldName": "measure(Total Salary)"
+                }
+              }
+            }
+          },
+          "position": {
+            "x": 6,
+            "y": 0,
+            "width": 3,
+            "height": 2
+          }
+        },
+        {
+          "widget": {
+            "name": "median_salary",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "hr_metrics",
+                  "fields": [
+                    {
+                      "name": "measure(Median Salary)",
+                      "expression": "MEASURE(`Median Salary`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "frame": {
+                "title": "Median Salary",
+                "showTitle": true
+              },
+              "widgetType": "counter",
+              "encodings": {
+                "value": {
+                  "fieldName": "measure(Median Salary)"
+                }
+              }
+            }
+          },
+          "position": {
+            "x": 9,
+            "y": 0,
+            "width": 3,
+            "height": 2
+          }
+        },
+        {
+          "widget": {
+            "name": "employees_by_dept",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "hr_metrics",
+                  "fields": [
+                    {
+                      "name": "measure(Employee Count)",
+                      "expression": "MEASURE(`Employee Count`)"
+                    },
+                    {
+                      "name": "Department",
+                      "expression": "`Department`"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 3,
+              "frame": {
+                "title": "Employees by Department",
+                "showTitle": true
+              },
+              "widgetType": "bar",
+              "encodings": {
+                "x": {
+                  "fieldName": "measure(Employee Count)",
+                  "scale": {
+                    "type": "quantitative"
+                  }
+                },
+                "y": {
+                  "fieldName": "Department",
+                  "scale": {
+                    "type": "categorical"
+                  }
+                }
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 2,
+            "width": 6,
+            "height": 4
+          }
+        },
+        {
+          "widget": {
+            "name": "salary_by_dept",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "hr_metrics",
+                  "fields": [
+                    {
+                      "name": "measure(Average Salary)",
+                      "expression": "MEASURE(`Average Salary`)"
+                    },
+                    {
+                      "name": "Department",
+                      "expression": "`Department`"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 3,
+              "frame": {
+                "title": "Average Salary by Department",
+                "showTitle": true
+              },
+              "widgetType": "bar",
+              "encodings": {
+                "x": {
+                  "fieldName": "measure(Average Salary)",
+                  "scale": {
+                    "type": "quantitative"
+                  }
+                },
+                "y": {
+                  "fieldName": "Department",
+                  "scale": {
+                    "type": "categorical"
+                  }
+                }
+              }
+            }
+          },
+          "position": {
+            "x": 6,
+            "y": 2,
+            "width": 6,
+            "height": 4
+          }
+        },
+        {
+          "widget": {
+            "name": "hiring_trend",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "hr_metrics",
+                  "fields": [
+                    {
+                      "name": "Hire Year",
+                      "expression": "`Hire Year`"
+                    },
+                    {
+                      "name": "measure(Employee Count)",
+                      "expression": "MEASURE(`Employee Count`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 3,
+              "frame": {
+                "title": "Hiring Trend by Year",
+                "showTitle": true
+              },
+              "widgetType": "line",
+              "encodings": {
+                "x": {
+                  "fieldName": "Hire Year",
+                  "scale": {
+                    "type": "quantitative"
+                  }
+                },
+                "y": {
+                  "fieldName": "measure(Employee Count)",
+                  "scale": {
+                    "type": "quantitative"
+                  }
+                }
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 6,
+            "width": 12,
+            "height": 4
+          }
+        },
+        {
+          "widget": {
+            "name": "dept_summary",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "hr_metrics",
+                  "fields": [
+                    {
+                      "name": "Department",
+                      "expression": "`Department`"
+                    },
+                    {
+                      "name": "measure(Employee Count)",
+                      "expression": "MEASURE(`Employee Count`)"
+                    },
+                    {
+                      "name": "measure(Average Salary)",
+                      "expression": "MEASURE(`Average Salary`)"
+                    },
+                    {
+                      "name": "measure(Total Salary)",
+                      "expression": "MEASURE(`Total Salary`)"
+                    },
+                    {
+                      "name": "measure(Min Salary)",
+                      "expression": "MEASURE(`Min Salary`)"
+                    },
+                    {
+                      "name": "measure(Max Salary)",
+                      "expression": "MEASURE(`Max Salary`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "frame": {
+                "title": "Department Summary",
+                "showTitle": true
+              },
+              "widgetType": "table",
+              "encodings": {
+                "columns": [
+                  {
+                    "fieldName": "Department"
+                  },
+                  {
+                    "fieldName": "measure(Employee Count)"
+                  },
+                  {
+                    "fieldName": "measure(Average Salary)"
+                  },
+                  {
+                    "fieldName": "measure(Total Salary)"
+                  },
+                  {
+                    "fieldName": "measure(Min Salary)"
+                  },
+                  {
+                    "fieldName": "measure(Max Salary)"
+                  }
+                ]
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 10,
+            "width": 12,
+            "height": 4
+          }
+        }
+      ],
+      "pageType": "PAGE_TYPE_CANVAS",
+      "layoutVersion": "GRID_V1"
+    }
+  ],
+  "uiSettings": {
+    "theme": {
+      "widgetHeaderAlignment": "ALIGNMENT_UNSPECIFIED"
+    },
+    "applyModeEnabled": false
+  }
+}
