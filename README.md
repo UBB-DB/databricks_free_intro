@@ -18,6 +18,7 @@ and deployed to GitHub Pages on every push to `main`.
 - [`module-1-lakehouse-basics.md`](module-1-lakehouse-basics.md) — Lakehouse, Delta Lake, ACID, time travel, medallion architecture, `MERGE INTO`.
 - [`module-2-bi-with-sql.md`](module-2-bi-with-sql.md) — 4 BI KPIs in **SQL** and **PySpark DataFrame**, with the equivalent SSIS data flow listed for each.
 - [`module-3-dashboard-and-wrapup.md`](module-3-dashboard-and-wrapup.md) — AI/BI Dashboard, AI/BI Genie, Unity Catalog walkthrough, take-home assignments.
+- [`module-4-pipelines-and-medallion.md`](module-4-pipelines-and-medallion.md) — Medallion ETL architecture (bronze-silver-gold), reusable transformation pipelines, Lakeflow orchestration as the serverless equivalent of SQL Server Agent.
 - [`notebooks/`](notebooks/) — **drop-in `.ipynb` files** for direct upload to Databricks Free Edition (one per module). See [`notebooks/README.md`](notebooks/README.md) for upload instructions.
 - Appendices:
   - [`appendix-ssis-to-databricks.md`](appendix-ssis-to-databricks.md) — full Rosetta stone + a 5-step `.dtsx` migration recipe.

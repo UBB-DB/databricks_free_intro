@@ -15,13 +15,13 @@ but content is fully rewritten for an audience that is comfortable with Python a
 
 ## Who this is for
 
-CS students from any of UBB's tracks where data engineering / BI shows up:
+CS students from any of UBB's tracks where data engineering / BI shows up.
 
-- **BSc**: Computer Science, Information Engineering, Artificial Intelligence,
+<!-- - **BSc**: Computer Science, Information Engineering, Artificial Intelligence,
   Mathematics-Computer Science.
 - **MSc**: *Data Science for Industry and Society*, *Artificial Intelligence for
   Connected Industries (AI4CI)*, *High Performance Computing and Big Data
-  Analytics*, *Databases*, *Software Engineering*.
+  Analytics*, *Databases*, *Software Engineering*. -->
 
 We assume you have already met **SQL Server, SSMS, SSIS, and SSRS / Power BI**
 in your Business Intelligence labs. This course is therefore framed as
@@ -30,7 +30,7 @@ a brand-new abstraction starting from zero.
 
 ## Learning outcomes
 
-By the end of the 2 hours you will be able to:
+By the end of the core 2 hours (plus an optional extension module) you will be able to:
 
 1. Explain what a **Data Lakehouse** is and where BI fits in it, contrasting it
    with the SQL-Server-and-SSIS stack you already know.
@@ -42,6 +42,8 @@ By the end of the 2 hours you will be able to:
    DataFrame** code, with the same SSIS data-flow design in mind for both.
 5. Publish an **AI/BI Dashboard** and ask natural-language questions of your
    data with **AI/BI Genie**.
+6. Build a **medallion pipeline** (bronze-silver-gold) and understand how to
+  orchestrate it with a **Lakeflow Job**.
 
 ## SSIS / SSMS ↔ Databricks Rosetta stone
 
@@ -93,33 +95,11 @@ mapping open in another tab during the workshop:
 The full mapping with code-level examples lives in
 [`appendix-ssis-to-databricks.md`](appendix-ssis-to-databricks.md).
 
-## What a lakehouse is, in one diagram
+For a role-based overview of the Databricks architecture (data engineer,
+analyst, ML engineer), see
+[`databricks-roles-and-lakehouse-overview.md`](databricks-roles-and-lakehouse-overview.md).
 
-```{mermaid}
-flowchart LR
-    subgraph oldStack [Yesterday: two stacks]
-        ssis[SSIS .dtsx<br/>packages]
-        sqlSrv[SQL Server<br/>warehouse]
-        files[CSV / log files<br/>on a file share]
-        ssis --> sqlSrv
-        files -. ad-hoc Excel .-> analyst1[Analyst]
-        sqlSrv --> ssrs[SSRS report]
-    end
-    subgraph lakehouse [Today: one lakehouse]
-        bronze[Bronze<br/>raw Delta tables]
-        silver[Silver<br/>cleaned Delta tables]
-        gold[Gold<br/>BI-ready views]
-        bronze --> silver --> gold
-        gold --> dash[AI/BI Dashboard]
-        gold --> genie[AI/BI Genie<br/>natural language Q&A]
-    end
-```
-
-The **lakehouse** is the right column: one storage layer (Delta on object
-store), one governance layer (Unity Catalog), one compute fabric (serverless
-SQL + Spark), and BI built on top instead of bolted on.
-
-## Session plan (120 minutes)
+## Session plan (120 min core )
 
 | Time | Block |
 | --- | --- |
@@ -129,6 +109,7 @@ SQL + Spark), and BI built on top instead of bolted on.
 | 0:55 – 1:35 | Module 2 — BI analysis with SQL + PySpark ([`module-2-bi-with-sql.md`](module-2-bi-with-sql.md)) |
 | 1:35 – 1:55 | Module 3 — AI/BI Dashboard + Genie + governance ([`module-3-dashboard-and-wrapup.md`](module-3-dashboard-and-wrapup.md)) |
 | 1:55 – 2:00 | Recap, take-home assignment, Q&A |
+| 2:00 – 2:25 | Optional Module 4 — pipelines + medallion orchestration ([`module-4-pipelines-and-medallion.md`](module-4-pipelines-and-medallion.md)) |
 
 ## Prerequisites
 
@@ -144,7 +125,7 @@ SQL + Spark), and BI built on top instead of bolted on.
 ## Drop-in notebooks
 
 If you do not want to copy-paste cells from this book during the live
-session, the [`notebooks/`](notebooks/) folder ships four ready-to-import
+session, the [`notebooks/`](notebooks/) folder ships five ready-to-import
 `.ipynb` files — one per module — that you can upload directly to your
 Databricks Free Edition workspace. See
 [`notebooks/README.md`](notebooks/README.md) for the three import paths

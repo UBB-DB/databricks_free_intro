@@ -23,10 +23,12 @@ project:
     - UBB Cluj
   toc:
     - file: intro.md
+    - file: databricks-roles-and-lakehouse-overview.md
     - file: setup-databricks-free.md
     - file: module-1-lakehouse-basics.md
     - file: module-2-bi-with-sql.md
     - file: module-3-dashboard-and-wrapup.md
+    - file: module-4-pipelines-and-medallion.md
     - title: Appendices
       children:
         - file: appendix-ssis-to-databricks.md

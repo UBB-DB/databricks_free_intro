@@ -113,19 +113,10 @@ lineage and `SHOW GRANTS` — works fine, and we cover the multi-user side as
 a reference in [`appendix-unity-catalog.md`](appendix-unity-catalog.md).
 ```
 
-## 4. Mini-assignment (in-session, 2 min)
+For a short in-class prompt, see
+[`module-3-short-assignment.md`](module-3-short-assignment.md).
 
-Answer in 3–4 bullets in your notebook (last cell):
-
-- Which **single product** would you push next quarter, and why?
-- Which **region × product** combination is currently underperforming
-  relative to its region average?
-- What **extra column** would reduce the uncertainty in your recommendation
-  (cost? margin? customer segment? marketing spend?)?
-- One question you would like to ask **Genie** that the current dataset
-  cannot yet answer.
-
-## 5. Take-home extensions (the SSIS migration path)
+## 4. Take-home extensions (the SSIS migration path)
 
 Pick **one** and submit a notebook URL by the next lab. All four are
 explicitly designed to bridge from your previous SSIS coursework.
@@ -146,7 +137,7 @@ explicitly designed to bridge from your previous SSIS coursework.
    [`appendix-ssis-to-databricks.md`](appendix-ssis-to-databricks.md) as the
    step-by-step recipe.
 
-## 6. Instructor close-out (2 min)
+## 5. Instructor close-out (2 min)
 
 - Recap the **lakehouse value proposition**: one platform, one governance
   layer, ACID open files, native BI + AI on the same data.
