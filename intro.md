@@ -105,11 +105,11 @@ analyst, ML engineer), see
 | --- | --- |
 | 0:00 – 0:10 | Introduction and SSIS↔Databricks mapping ([`intro.md`](intro.md)) |
 | 0:10 – 0:25 | Free Edition setup and workspace tour ([`setup-databricks-free.md`](setup-databricks-free.md)) |
-| 0:25 – 0:55 | Module 1 — Lakehouse basics + Delta + time travel ([`module-1-lakehouse-basics.md`](module-1-lakehouse-basics.md)) |
-| 0:55 – 1:35 | Module 2 — BI analysis with SQL + PySpark ([`module-2-bi-with-sql.md`](module-2-bi-with-sql.md)) |
-| 1:35 – 1:55 | Module 3 — AI/BI Dashboard + Genie + governance ([`module-3-dashboard-and-wrapup.md`](module-3-dashboard-and-wrapup.md)) |
-| 1:55 – 2:00 | Recap, take-home assignment, Q&A |
-| 2:00 – 2:25 | Optional Module 4 — pipelines + medallion orchestration ([`module-4-pipelines-and-medallion.md`](module-4-pipelines-and-medallion.md)) |
+| 0:25 – 0:50 | Module 1 — Lakehouse basics + Delta + time travel ([`module-1-lakehouse-basics.md`](module-1-lakehouse-basics.md)) |
+| 0:50 – 1:15 | Module 2 — BI analysis with SQL + PySpark ([`module-2-bi-with-sql.md`](module-2-bi-with-sql.md)) |
+| 1:15 – 1:35| Module 3 — AI/BI Dashboard + Genie + governance ([`module-3-dashboard-and-wrapup.md`](module-3-dashboard-and-wrapup.md)) |
+
+| 1:35 – 2:00 | Optional Module 4 — pipelines + medallion orchestration ([`module-4-pipelines-and-medallion.md`](module-4-pipelines-and-medallion.md)) |
 
 ## Prerequisites
 
